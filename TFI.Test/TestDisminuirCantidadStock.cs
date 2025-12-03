@@ -12,48 +12,49 @@ namespace TFI.Test
         [TestMethod]
         public void IngresarCantidadMayorMax()
         {
-            Stock stock = new Stock();
+            Stock stock = new Stock(100, 10);
             stock.Cantidad = 20;
 
 
             Assert.ThrowsException<Exception>(() => {
-                stock.DisminuirCantidad(70);
+                stock.DisminuirCantidad(150);
             });
         }
 
         [TestMethod]
         public void IngresarCantidadExitosa()
         {
-            Stock stock = new Stock();
+            Stock stock = new Stock(100, 10);
             stock.Cantidad = 20;
 
             stock.DisminuirCantidad(5);
-            Assert.IsTrue(true);
+            
+            Assert.AreEqual(15, stock.Cantidad);
         }
 
         [TestMethod]
         public void IngresarCantidadNegativa()
         {
-            Stock stock = new Stock();
+            Stock stock = new Stock(100, 10);
             stock.Cantidad = 20;
 
             Assert.ThrowsException<Exception>(() =>
             {
                 stock.DisminuirCantidad(-5);
-            });
+     });
         }
 
         [TestMethod]
         public void IngresarCantidadCero()
         {
-            Stock stock = new Stock();
+            Stock stock = new Stock(100, 10);
             stock.Cantidad = 20;
 
             Assert.ThrowsException<Exception>(() =>
             {
                 stock.DisminuirCantidad(0);
-            });
-        }
+         });
+ }
 
-    }
+ }
 }
