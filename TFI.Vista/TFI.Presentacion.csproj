@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TFI.Vista</RootNamespace>
+    <AssemblyName>TFI.Vista</AssemblyName>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Paquetes necesarios -->
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.2" />
+    <PackageReference Include="Unity" Version="5.11.10" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.1" />
+    
+  <!-- Entity Framework Core Tools - Necesario para dotnet ef migrations -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
+      <PrivateAssets>all</PrivateAssets>
+ <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TFI.AccesoADatos\TFI.AccesoADatos.csproj" />
+    <ProjectReference Include="..\TFI.Dominio\TFI.Dominio.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Iconos\ivc_logo.png" />
+  </ItemGroup>
+</Project>

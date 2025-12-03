@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <AssemblyTitle>TFI.AccesoADatos</AssemblyTitle>
+    <Product>TFI.AccesoADatos</Product>
+    <Copyright>Copyright ©  2021</Copyright>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <!-- Entity Framework Core 8 - Reemplazo de EF6 -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    
+    <!-- Para leer App.config en .NET 8 -->
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.1" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\TFI.Dominio\TFI.Dominio.csproj" />
+  </ItemGroup>
+  
+  <!-- Excluir solo las migraciones antiguas de EF6, permitir nuevas de EF Core -->
+  <ItemGroup>
+    <!-- Excluir migraciones antiguas de Entity Framework 6 -->
+    <Compile Remove="Migrations\202*.cs" />
+    <Compile Remove="Migrations\Configuration.cs" />
+    <EmbeddedResource Remove="Migrations\*.resx" />
+    <None Remove="Migrations\*.Designer.cs" />
+    
+    <!-- Excluir toda la carpeta de respaldo de migraciones EF6 -->
+    <Compile Remove="Migrations.EF6.OLD\**\*.cs" />
+    <EmbeddedResource Remove="Migrations.EF6.OLD\**\*.resx" />
+    <None Remove="Migrations.EF6.OLD\**\*" />
+    
+    <!-- Las nuevas migraciones de EF Core se incluirán automáticamente -->
+  </ItemGroup>
+</Project>
